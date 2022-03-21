@@ -7,8 +7,8 @@ pub struct Vector2Int {
 
 impl Vector2Int {
     pub const ZERO: Vector2Int = Vector2Int { x: 0, y: 0 };
-    pub const UP: Vector2Int = Vector2Int { x: 0, y: -1 };
-    pub const DOWN: Vector2Int = Vector2Int { x: 0, y: 1 };
+    pub const UP: Vector2Int = Vector2Int { x: 0, y: 1 };
+    pub const DOWN: Vector2Int = Vector2Int { x: 0, y: -1 };
     pub const LEFT: Vector2Int = Vector2Int { x: -1, y: 0 };
     pub const RIGHT: Vector2Int = Vector2Int { x: 1, y: 0 };
 
@@ -17,7 +17,7 @@ impl Vector2Int {
     }
 
     pub fn squared_distance_to(&self, to: Vector2Int) -> i32 {
-        (to.x - self.x).pow(2) - (to.y - self.y).pow(2)
+        (to.x - self.x).pow(2) + (to.y - self.y).pow(2)
     }
 
     pub fn distance_to(&self, to: Vector2Int) -> f32 {
