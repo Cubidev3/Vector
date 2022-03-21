@@ -1,7 +1,4 @@
-use std::ops::AddAssign;
-use std::ops::DivAssign;
-use std::ops::MulAssign;
-use std::ops::SubAssign;
+use std::ops;
 
 pub struct Vector2Int {
     pub x: i32,
@@ -23,8 +20,18 @@ impl Vector2Int {
         (to.x - self.x).pow(2) - (to.y - self.y).pow(2)
     }
 
+    pub fn distance_to(&self, to: Vector2Int) -> f32 {
+        //Please note that this conversion is lossy and failure prone
+        (self.squared_distance_to(to) as f32).sqrt()
+    }
+
     pub fn squared_length(&self) -> i32 {
         self.x.pow(2) + self.y.pow(2)
+    }
+
+    pub fn length(&self) -> f32 {
+        //Please note that this conversion is lossy and failure prone
+        (self.squared_length() as f32).sqrt()
     }
 
     pub fn sign(&self) -> Vector2Int {
@@ -42,28 +49,28 @@ impl Vector2Int {
     }
 }
 
-impl AddAssign<Vector2Int> for Vector2Int {
+impl ops::AddAssign<Vector2Int> for Vector2Int {
     fn add_assign(&mut self, rhs: Vector2Int) {
         self.x += rhs.x;
         self.y += rhs.y;
     }
 }
 
-impl SubAssign<Vector2Int> for Vector2Int {
+impl ops::SubAssign<Vector2Int> for Vector2Int {
     fn sub_assign(&mut self, rhs: Vector2Int) {
         self.x -= rhs.x;
         self.y -= rhs.y;
     }
 }
 
-impl MulAssign<i32> for Vector2Int {
+impl ops::MulAssign<i32> for Vector2Int {
     fn mul_assign(&mut self, rhs: i32) {
         self.x *= rhs;
         self.y *= rhs;
     }
 }
 
-impl DivAssign<i32> for Vector2Int {
+impl ops::DivAssign<i32> for Vector2Int {
     fn div_assign(&mut self, rhs: i32) {
         self.x /= rhs;
         self.y /= rhs;
