@@ -51,7 +51,7 @@ impl Vector2Int {
         }
     }
 
-    pub fn oposite(&self) -> Vector2Int {
+    pub fn opposite(&self) -> Vector2Int {
         Vector2Int {
             x: self.x * -1,
             y: self.y * -1,
