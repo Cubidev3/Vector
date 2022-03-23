@@ -62,7 +62,7 @@ impl Vector3Int {
         }
     }
 
-    pub fn oposite(&self) -> Vector3Int {
+    pub fn opposite(&self) -> Vector3Int {
         Vector3Int {
             x: self.x * -1,
             y: self.y * -1,
